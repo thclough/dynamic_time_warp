@@ -4,6 +4,10 @@
 Created on Tue Apr 26 11:22:44 2022
 
 @author: Tighe_Clough
+
+A k-nearest neighbors multi-dimensional time warp estimator from scratch. For the purpose of mulit-dimensional sequential data classification.
+
+Based on ideas from https://pubmed.ncbi.nlm.nih.gov/29104448/
 """
 
 import pandas as pd
@@ -11,8 +15,10 @@ import numpy as np
 import copy
 import time
 
+# Areas for further development
 # can inherit gridsearchcv and use for this on different warping windows?
-
+# store certain distances, check if base_num>comp_num (cut time by half)?
+# only calculate the 0ths row and column you need given window?
 
 class knnDtwAdap:
     """ 
@@ -180,7 +186,7 @@ class knnDtwAdap:
         return dtw_d_cost
         
     def learn_threshold(self):
-        """ Calculates threshold to for adaptive DTW. 
+        """ Calculates threshold for adaptive DTW. 
         Threshold determines when to use DTWi or DTWd
         
         Returns
@@ -204,7 +210,7 @@ class knnDtwAdap:
         
         return threshold
     
-    def decider(self, lowers, highers):
+    def decider(self, lowers, highers): 
         """ Finds best cutoff point, staying above most elements in lowers and
         least elements in highers. Actually using logistic regression for this,
         classifying highers as 1 and lowers as 0.
@@ -478,7 +484,7 @@ class knnDtwAdap:
     
     def array_tunnel(self, records):
         """
-        creates array tunnel, each sequence stacked one behind another
+        creates array "tunnel", each sequence stacked one behind another
 
         Returns
         -------
@@ -500,6 +506,3 @@ class knnDtwAdap:
         # read data into tables
         pass
 
-# store certain distances, check if base_num>comp_num (cut time by half)
-
-# only calculate the 0ths row and column you need given window
