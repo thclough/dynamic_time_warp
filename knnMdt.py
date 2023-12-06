@@ -5,7 +5,7 @@ Created on Tue Apr 26 11:22:44 2022
 
 @author: Tighe_Clough
 
-A k-nearest neighbors multi-dimensional time warp estimator from scratch. For the purpose of mulit-dimensional sequential data classification.
+A k-nearest neighbors multi-dimensional time warp estimator from scratch. For the purpose of multi-dimensional sequential data classification.
 
 Based on ideas from https://pubmed.ncbi.nlm.nih.gov/29104448/
 """
